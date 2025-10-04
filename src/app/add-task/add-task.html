@@ -1,0 +1,26 @@
+<section id="addSection">
+  @if (action == 'add') {
+    <div class="bg-body-tertiary border rounded-3 pe-5 pb-3 pt-3 ps-3">
+      <form id="addForm" class="row g-3 align-items-end">
+        <div class="col-12 col-md-8">
+          <label for="task" class="form-label">Tâche</label>
+          <input
+            type="text"
+            class="form-control"
+            id="task"
+            placeholder="Ajouter une Nouvelle Tâche"
+            #task
+          />
+        </div>
+        <div class="col-12 col-md-4 d-grid d-sm-flex gap-2">
+          <button type="button" class="btn btn-primary" (click)="addTask(task.value)">
+            Valider
+          </button>
+          <button class="btn btn-outline-secondary me-5" type="button" (click)="cancel()">
+            Annuler
+          </button>
+        </div>
+      </form>
+    </div>
+  }
+</section>

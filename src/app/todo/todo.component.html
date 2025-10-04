@@ -1,0 +1,60 @@
+<header class="d-flex align-items-center justify-content-between mb-4">
+  <h2>Liste des tâches à faire :</h2>
+</header>
+
+<section id="addSection" class="d-sm-flex gap-3 align-items-stretch">
+  <button class="btn btn-primary" (click)="setAction('add')">Ajouter une tâche</button>
+
+  <app-add-task [action]="action" (taskAdded)="setAction('')" (cancelAdd)="setAction('')" />
+</section>
+
+<section id="editSection" class="mb-4 mt-3">
+  <app-edit-task
+    [action]="action"
+    [taskToEdit]="taskToEdit"
+    (taskEdited)="setAction('')"
+    (cancelAdd)="setAction('')"
+  />
+</section>
+
+<section id="listSection">
+  <div class="d-flex align-items-center justify-content-between mb-2">
+    <h3 class="h5 mb-0">Toutes les tâches</h3>
+    <span class="badge text-bg-secondary">{{ todos.length || 0 }}</span>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover align-middle">
+      <thead class="table-light">
+        <tr>
+          <th scope="col" class="col-1">#</th>
+          <th scope="col">Tâche</th>
+          <th scope="col" class="text-center text-nowrap">Etat</th>
+          <th scope="col" class="text-center text-nowrap">Editer</th>
+          <th scope="col" class="text-center text-nowrap">Supprimer</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (todo of todos; track todo.id) {
+          <tr>
+            <th scope="row" class="text-body-tertiary">{{ todo.id }}</th>
+            <td [title]="todo.task">{{ todo.task }}</td>
+            <td
+              class="text-center text-primary-emphasis bg-secondary-subtle border border-secondary-subtle"
+            >
+              {{ todo.state }}
+            </td>
+            <td class="text-center text-end">
+              <button class="btn btn-outline-success" (click)="showEditForm(todo)">Éditer</button>
+            </td>
+            <td class="text-center text-end">
+              <button class="btn btn-outline-danger" (click)="deleteTask(todo.id)">
+                Supprimer
+              </button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>

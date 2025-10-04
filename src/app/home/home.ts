@@ -5,15 +5,17 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-home',
   imports: [FormsModule],
   templateUrl: './home.html',
-  styleUrl: './home.css'
+  styleUrl: './home.css',
 })
 export class Home {
-  title = 'Hello World!';
-  URL = "https://web.dev/static/explore/angular/cover-wide.svg";
-  URL1 = "https://web.dev/static/explore/angular/cover-wide.svg";
-  URL2 = "https://onesolutionsweb.com/wp-content/uploads/2022/02/angular-icon-logo-284x300.png.webp";
-
-  changeLog = () => {
-    this.URL = (this.URL == this.URL1) ? this.URL2 : this.URL1;
-  }
+  title = 'Nouveau titre';
+  url1 =
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6pXQTat5xa_jxh8xM2p-AKDEXFPYgRqOI2Q&s';
+  url2 =
+    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGakkUEbXyfann4M16v9CV-sTa915cUOdh9g&s';
+  url = this.url1;
+  changeLogo = () => {
+    //console.log("Changing Logo ....")
+    this.url = this.url === this.url1 ? this.url2 : this.url1;
+  };
 }

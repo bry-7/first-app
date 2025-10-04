@@ -1,0 +1,35 @@
+@if (action == 'edit') {
+  <div class="bg-body-tertiary border rounded-3 p-3">
+    <form id="addForm" class="row g-3 align-items-end">
+      <div class="mb-1 form-check">
+        <label for="task" class="form-label">Tâche</label>
+        <input
+          type="text"
+          class="form-control"
+          id="task"
+          name="task"
+          [(ngModel)]="taskToEdit.task"
+        />
+        <div id="taskHelp" class="form-text">Modifier Cette Tâche.</div>
+      </div>
+      <div class="mb-1 form-check">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="state"
+          [checked]="taskToEdit.state == 'done'"
+          (change)="changeState()"
+        />
+        <label class="form-check-label" for="state">Terminer la tâche</label>
+        <div id="stateHelp" class="form-text">
+          Activez pour Marquer la Tâche comme « Terminée ».
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-primary" (click)="editTask()">Valider</button>
+      <button class="btn btn-outline-secondary me-5" type="button" (click)="cancel()">
+        Annuler
+      </button>
+    </form>
+  </div>
+}

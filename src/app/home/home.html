@@ -1,10 +1,8 @@
 <h1>{{ title }}</h1>
-
-<button (click) = changeLog()>
-  Change Logo
-</button>
-
-<img [src]="URL">
-
 <input [(ngModel)]="title" />
-
+<div>
+  <button (click)="changeLogo()">Changer le logo</button>
+</div>
+<div>
+  <img [src]="url" />
+</div>
